@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import List from './components/List';
+import FormList from './components/FormList';
+import { useState } from 'react';
 
 function App() {
+  const [Lista,setLista] = useState([])
+
+  const newElemento = (element) => {
+    const aux=[...Lista]
+    aux.push(element)
+    setLista(aux)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <FormList onNewElemento={newElemento}/>
+      <List lista={Lista} setLista={setLista}/>
+    </>
   );
 }
 
